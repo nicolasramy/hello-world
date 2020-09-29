@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: statping
+  name: nginx
   namespace: hello-world
   labels:
     app: hello-world
