@@ -1,0 +1,36 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: statping
+  namespace: hello-world
+  labels:
+    app: statping
+    service: statping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: statping
+      service: statping
+  template:
+    metadata:
+      labels:
+        app: statping
+        service: statping
+    spec:
+      containers:
+        - name: statping
+          image: statping/statping
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app
+              name: statping
+          env:
+            - name: DB_CONN
+              value: sqlite
+      volumes:
+      - name: statping
+        persistentVolumeClaim:
+          claimName: statping

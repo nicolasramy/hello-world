@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: statping
+  namespace: hello-world
+  labels:
+    app: statping
+    service: statping
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: statping
+    service: statping
