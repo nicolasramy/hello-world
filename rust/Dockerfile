@@ -5,6 +5,6 @@ WORKDIR /usr/src/myapp
 COPY . .
 
 RUN rustup default nightly
-#RUN cargo install --path .
-#
-#CMD ["myapp"]
+RUN cargo run
+
+CMD ["cargo", "run"]
